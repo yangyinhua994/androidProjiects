@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 第一个Preference，包含一张图片 -->
+    <Preference
+        android:key="preference_image"
+        android:layout="@layout/preference_layout_image"/>
+
+    <Preference
+
+        android:key="preference_data1"
+        android:layout="@layout/preference_layout_data"
+        android:title="LMEL1"
+        android:summary="%s"/>
+
+    <Preference
+        android:key="preference_data2"
+        android:layout="@layout/preference_layout_data"
+        android:title="LMEL2"
+        android:summary="%s"/>
+
+</PreferenceScreen>

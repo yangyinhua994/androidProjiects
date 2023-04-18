@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    倍率-->
+    <integer name="refreshRate">1</integer>
+    <!--    倍率-->
+    <integer name="refreshRate2">2</integer>
+</resources>

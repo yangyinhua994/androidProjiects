@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Category Title">
+
+        <Preference
+            android:title="Image Preference"
+            android:summary="This is an image preference">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tick" />
+
+        </Preference>
+
+        <Preference
+            android:title="IMEL1"
+            android:summary="加 325325">
+
+        </Preference>
+
+        <Preference
+            android:title="IMEL2"
+            android:summary="加 325325">
+
+        </Preference>
+
+    </PreferenceCategory>
+</PreferenceScreen>

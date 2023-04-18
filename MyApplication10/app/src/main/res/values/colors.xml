@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="test">#ff33b5e5</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="black_color">#000000</color>
+    <color name="floating_action_button_icon_color">@color/white_color</color>
+    <color name="fm_main_color">#004466</color>
+    <color name="theme_title_color">#DEFFFFFF</color>
+    <color name="theme_primarydark_color">#455A64</color>
+    <color name="theme_primary_color">#607D8B</color>
+    <color name="theme_windowBackground">#607D8B</color>
+    <color name="floating_action_button_touch_tint">#80ffffff</color>
+    <color name="actionbar_overflow_title_color">#DE000000</color>
+    <color name="actionbar_overflow_title_disabled_color">#33000000</color>
+    <!-- FM main page text color -->
+    <!--    SR:178908 Add recording list to FM by yangyinhua 2023.2.14 begin-->
+    <color name="recording_file_list_text">#000000</color>
+    <!--    SR:178908 Add recording list to FM by yangyinhua 2023.2.14 end-->
+    <color name="text_fm_color">#CFD8DC</color>
+</resources>

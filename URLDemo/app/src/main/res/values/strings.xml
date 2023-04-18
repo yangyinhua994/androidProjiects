@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">URLDemo</string>
+    <string name="categories">categories: </string>
+    <string name="duration">duration：</string>
+    <string name="starring">starring：</string>
+    <string name="movie_name">Movie Name</string>
+</resources>

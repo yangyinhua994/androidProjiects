@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="refreshSleepTime">1</integer>
+    <integer name="peopleThreadSleepTime">1</integer>
+    <integer name="peopleMoveDistance">10</integer>
+    <integer name="runIndex">10000</integer>
+</resources>

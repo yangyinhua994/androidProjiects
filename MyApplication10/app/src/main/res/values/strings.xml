@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="delete">delete</string>
+    <string name="Regulatory_labels_preference_title">test</string>
+</resources>
