@@ -19,7 +19,12 @@
 
         <activity android:name=".activity.MovieMainActivity"/>
 
-        <activity android:name=".activity.VideoPlayerActivity"/>
+        <activity
+            android:name=".activity.VideoPlayerActivity"
+            android:theme="@style/FullscreenTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:hardwareAccelerated="true"/>
 
     </application>
 

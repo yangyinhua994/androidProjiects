@@ -21,7 +21,9 @@ import com.example.urldemo.dto.Movie;
 import com.example.urldemo.utils.LogUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author yangyinhua
@@ -32,6 +34,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     private Context mContext;
     private static final int TYPE_MOVIE = 0;
     private static final int TYPE_LOADING = 1;
+    Random random = new Random();
+    private List<String> urlList = Arrays.asList("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+            "https://playertest.longtailvideo.com/adaptive/chips/chips.m3u8",
+            "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/stream.m3u8",
+            "https://storage.googleapis.com/archive.org/details/rollingstone_goatsheadsoup/goatsheadsoup/goatsheadsoup.m3u8",
+            "rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov"
+            );
 
     public MovieAdapter() {
         mMovies = new ArrayList<>();
@@ -65,7 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, VideoPlayerActivity.class);
-                intent.putExtra("video_url", movie.getPlayUrl());
+                intent.putExtra("video_url", "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8");
                 mContext.startActivity(intent);
             }
         });
