@@ -22,60 +22,36 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author yangyinhua
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mMainBt1;
-    private Button mMainBt2;
-    private Button mMainBt3;
-    public static final String BAI_DU_URL = "https://www.baidu.com";
-    public static final String BING_URL = "https://www.bing.com";
-    public static final String MY_URL = " http://localhost:8080/hello";
-    private static String url = "";
+    private Button aiBt;
+    private Button videoBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mMainBt1 = findViewById(R.id.bt1);
-        mMainBt1.setOnClickListener(this);
-        mMainBt2 = findViewById(R.id.bt2);
-        mMainBt2.setOnClickListener(this);
-        mMainBt3 = findViewById(R.id.bt3);
-        mMainBt3.setOnClickListener(this);
-        Intent intent = new Intent(this, MovieMainActivity.class);
-        startActivity(intent);
-        finish();
+        aiBt = findViewById(R.id.ai);
+        aiBt.setOnClickListener(this);
+        videoBt = findViewById(R.id.video);
+        videoBt.setOnClickListener(this);
     }
-
-    int corePoolSize = 5;
-    int maximumPoolSize = 10;
-    int keepAliveTime = 1000;
-    ExecutorService executor = new ThreadPoolExecutor(
-            corePoolSize,
-            maximumPoolSize,
-            keepAliveTime,
-            TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<>(),
-            Executors.defaultThreadFactory(),
-            new ThreadPoolExecutor.AbortPolicy()
-    );
-
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-
         switch (view.getId()) {
-            case R.id.bt1:
-                url = BAI_DU_URL;
-                break;
-            case R.id.bt2:
-                url = BING_URL;
-                break;
-            case R.id.bt3:
-                Intent intent = new Intent(this, MovieMainActivity.class);
+            case R.id.ai:
+                Intent intent = new Intent(this, AiActivity.class);
                 startActivity(intent);
-                return;
+                break;
+            case R.id.video:
+                intent = new Intent(this, MovieMainActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }

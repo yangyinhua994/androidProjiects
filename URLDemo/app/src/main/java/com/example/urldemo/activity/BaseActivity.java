@@ -25,4 +25,6 @@ public class BaseActivity extends AppCompatActivity {
     public static final int MSG_ID_UPDATE_MOVIE = 2;
     public static final int MSG_ID_PLAY_VIDEO = 3;
 
+
+
 }

@@ -3,8 +3,6 @@ package com.example.urldemo.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.urldemo.R;
-import com.example.urldemo.activity.VideoPlayerActivity;
+import com.example.urldemo.activity.VideoActivity;
 import com.example.urldemo.dto.Movie;
-import com.example.urldemo.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,8 +70,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, VideoPlayerActivity.class);
-                intent.putExtra("video_url", "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8");
+                Intent intent = new Intent(mContext, VideoActivity.class);
+                intent.putExtra("video_url", "https://tucdn.wpon.cn/api-girl/index.php?wpon=json");
                 mContext.startActivity(intent);
             }
         });
