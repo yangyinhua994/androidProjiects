@@ -50,8 +50,6 @@ public class VideoAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LogUtils.d("instantiateItem");
-        if (mp4UrlList.isEmpty()) return null;
         VideoView videoView = new VideoView(container.getContext());
         videoView.setVideoPath(mp4UrlList.get(position));
         videoView.setOnPreparedListener(mp -> videoView.start());
