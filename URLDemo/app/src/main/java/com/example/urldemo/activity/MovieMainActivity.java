@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.urldemo.R;
 import com.example.urldemo.adapter.VideoPagerAdapter;
 import com.example.urldemo.utils.ExecutorUtil;
+import com.example.urldemo.utils.ExecutorUtl;
 import com.example.urldemo.utils.LogUtils;
 
 import org.json.JSONException;
@@ -33,7 +34,20 @@ import okhttp3.Response;
 public class MovieMainActivity extends Activity {
 
     private Context mContext;
-    private final String url = "https://tucdn.wpon.cn/api-girl/index.php?wpon=json";
+    private final String ip = "10.0.2.2";
+    private final int port = 8081;
+
+    //测试链接
+    private final String url = "http://" + ip +":" + port + "/json";
+    private final String connection = "http";
+
+    //网络链接
+    private final String distalEndUrl = "https://tucdn.wpon.cn/api-girl/index.php?wpon=json";
+    private final String distalEndConnection = "https";
+
+    private String connectUrl = url;
+    private String connectionMethod = connection;
+
     private ViewPager videoPagerView;
     private VideoPagerAdapter videoPagerAdapter;
     //当前视频列表大小
@@ -50,6 +64,11 @@ public class MovieMainActivity extends Activity {
     public final int MSG_ID_UPDATE_VIDEO_END = 1;
     public final int MSG_ID_TIME_OUT = 2;
 
+    private final OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(20, TimeUnit.SECONDS)
+            .build();
+
 
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()){
@@ -64,9 +83,10 @@ public class MovieMainActivity extends Activity {
                         videoPagerAdapter.notifyDataSetChanged();
                         currentSize += list.size();
                     }
+                    break;
                 case MSG_ID_TIME_OUT:
                     Toast.makeText(mContext, "链接超时", Toast.LENGTH_SHORT).show();
-                    LogUtils.d("链接超时： " + url);
+                    LogUtils.d("链接超时： " + connectUrl);
                     break;
                 default:
                     super.handleMessage(msg);
@@ -78,6 +98,12 @@ public class MovieMainActivity extends Activity {
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ExecutorUtl.getExecutor().execute(() ->{
+            if (getUrlResponse(connectUrl) == null){
+                connectUrl = distalEndUrl;
+                connectionMethod = distalEndConnection;
+            }
+        });
         init();
         mContext = this;
         super.onCreate(savedInstanceState);
@@ -131,15 +157,8 @@ public class MovieMainActivity extends Activity {
                 if (updateVideoNumber <= UPDATE_VIDEO_THRESHOLD){
                     List<String> videoUrl = new ArrayList<>();
                     for (int x = UPDATE_VIDEO_NUMBER; x>0; x--){
-                        OkHttpClient client = new OkHttpClient.Builder()
-                                .connectTimeout(10, TimeUnit.SECONDS)
-                                .readTimeout(20, TimeUnit.SECONDS)
-                                .build();
-                        Request request = new Request.Builder().url(url).build();
-                        Response response;
-                        try {
-                            response = client.newCall(request).execute();
-                        } catch (IOException e) {
+                        Response response = getUrlResponse(connectUrl);
+                        if (response == null){
                             mHandler.sendMessage(mHandler.obtainMessage(MSG_ID_TIME_OUT));
                             return;
                         }
@@ -158,7 +177,7 @@ public class MovieMainActivity extends Activity {
                         }
                         try {
                             if (String.valueOf(SWITCH_VIDEO_THRESHOLD).equals(videoJson.get("result").toString())){
-                                videoUrl.add("https:" + videoJson.get("mp4"));
+                                videoUrl.add(connectionMethod + ":" + videoJson.get("mp4"));
                             }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -189,12 +208,12 @@ public class MovieMainActivity extends Activity {
 
         View view = videoPagerView.getChildAt(currentVideoIndex);
         if (view instanceof VideoView) {
-            LogUtils.d("播放视频 " + (currentVideoIndex + 1));
             ((VideoView)view).start();
         }
     }
 
     private void playVideo(int videoIndex){
+        LogUtils.d("播放视频的链接: " + videoPagerAdapter.getVideoList(videoIndex));
         if(videoIndex > 0 || videoIndex <= currentSize){
             View view = videoPagerView.getChildAt(videoIndex);
             if (view instanceof VideoView) {
@@ -211,6 +230,17 @@ public class MovieMainActivity extends Activity {
         if (view instanceof VideoView) {
             ((VideoView)view).resume();
         }
+    }
+
+    private Response getUrlResponse(String url){
+        Request request = new Request.Builder().url(url).build();
+        Response response;
+        try {
+            response = client.newCall(request).execute();
+        } catch (IOException e) {
+            return null;
+        }
+        return response;
     }
 
     @Override

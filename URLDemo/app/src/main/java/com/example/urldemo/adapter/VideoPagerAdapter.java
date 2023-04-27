@@ -27,6 +27,12 @@ public class VideoPagerAdapter extends PagerAdapter {
     private Activity activity;
     private List<String> videoList = new ArrayList<>();
     private boolean isOne = true;
+
+    public String getVideoList(int index) {
+        return videoList.get(index);
+    }
+
+
     //加载到几秒播放
     private final int loadSecondsPlay = 1;
     Handler mHandler = new Handler();
@@ -54,7 +60,6 @@ public class VideoPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LogUtils.d("position = " + position);
         VideoView videoView;
         if (currentVideoIndex == position){
             videoView = (VideoView) container.getChildAt(position);
