@@ -21,7 +21,7 @@ import java.util.List;
 public class VideoPagerAdapter extends PagerAdapter {
 
     //当前视频的索引
-    private int currentVideoIndex = -1;
+    private int currentVideoIndex = 1;
     //视频是否加载完成
     private boolean isPaused = false;
     private Activity activity;
@@ -60,33 +60,46 @@ public class VideoPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        VideoView videoView;
-        if (currentVideoIndex == position){
-            videoView = (VideoView) container.getChildAt(position);
-        }else if (currentVideoIndex < position){
-            VideoView previousVideoView = (VideoView) container.getChildAt(currentVideoIndex);
-            if (previousVideoView != null){
-                previousVideoView.pause();
-            }
-            //后滑
+
+        VideoView videoView = (VideoView) container.getChildAt(position);
+        if (videoView == null){
             videoView = new VideoView(activity);
-            String videoUrl = videoList.get(position);
-            videoView.setVideoPath(videoUrl);
-            LogUtils.d("第" + (position + 1) + "个视频处理完成");
+            videoView.setVideoPath(videoList.get(position));
             setLoadTime(videoView);
+            videoView.start();
             container.addView(videoView);
         }else {
-            //前滑
-            videoView = (VideoView) container.getChildAt(position);
-            videoView.resume();
+            if (position > currentVideoIndex){
+                //前滑
+                //暂停上一个视频加载
+                videoView = (VideoView) container.getChildAt(position - 1);
+                videoView.pause();
+            }else if (position < currentVideoIndex){
+                //后滑
+                VideoView nextVideoView = (VideoView) container.getChildAt(position + 1);
+                if (nextVideoView != null){
+                    nextVideoView.pause();
+                }
+                videoView.resume();
+                videoView.start();
+            }
+
         }
+        LogUtils.d("播放 " + videoList.get(position));
         currentVideoIndex = position;
         return videoView;
+
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
+    }
+
+    private void loadVideo(VideoView videoView, int position) {
+        videoView.setVideoPath(videoList.get(position));
+        setLoadTime(videoView);
+        videoView.start();
     }
 
     private void setLoadTime(VideoView videoView){

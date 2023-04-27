@@ -111,38 +111,38 @@ public class MovieMainActivity extends Activity {
         videoPagerView = findViewById(R.id.viewPager);
         videoPagerAdapter = new VideoPagerAdapter(this);
         videoPagerView.setAdapter(videoPagerAdapter);
-        videoPagerView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // 滑动正在发生,position表示当前页面,
-                // positionOffset表示页面偏移的百分比, positionOffsetPixels表示像素偏移量
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                // 当新的页面被选中时调用
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                // 页面滚动的状态改变时调用,
-                // 状态可以是:ViewPager.SCROLL_STATE_IDLE、ViewPager.SCROLL_STATE_DRAGGING 或者 ViewPager.SCROLL_STATE_SETTLING
-                switch (state) {
-                    case ViewPager.SCROLL_STATE_IDLE:
-                        // 滚动停止
-                        break;
-                    case ViewPager.SCROLL_STATE_DRAGGING:
-                        // 页面在拖动
-                        break;
-                    case ViewPager.SCROLL_STATE_SETTLING:
-                        LogUtils.d("播放下一个视频");
-                        currentVideoIndex ++;
-                        playVideo(currentVideoIndex);
-                        break;
-                }
-            }
-        });
+//        videoPagerView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                // 滑动正在发生,position表示当前页面,
+//                // positionOffset表示页面偏移的百分比, positionOffsetPixels表示像素偏移量
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                // 当新的页面被选中时调用
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//                // 页面滚动的状态改变时调用,
+//                // 状态可以是:ViewPager.SCROLL_STATE_IDLE、ViewPager.SCROLL_STATE_DRAGGING 或者 ViewPager.SCROLL_STATE_SETTLING
+//                switch (state) {
+//                    case ViewPager.SCROLL_STATE_IDLE:
+//                        // 滚动停止
+//                        break;
+//                    case ViewPager.SCROLL_STATE_DRAGGING:
+//                        // 页面在拖动
+//                        break;
+//                    case ViewPager.SCROLL_STATE_SETTLING:
+//                        LogUtils.d("播放下一个视频");
+//                        currentVideoIndex ++;
+//                        playVideo(currentVideoIndex);
+//                        break;
+//                }
+//            }
+//        });
 
     }
 
