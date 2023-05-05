@@ -42,11 +42,14 @@ public class MovieMainActivity extends Activity {
     private final String connection = "http";
 
     //网络链接
-    private final String distalEndUrl = "https://tucdn.wpon.cn/api-girl/index.php?wpon=json";
+    private final String distalEndUrl = "https://v.api.aa1.cn/api/api-girl-11-02/index.php?type=json";
     private final String distalEndConnection = "https";
 
-    private String connectUrl = url;
-    private String connectionMethod = connection;
+  /*  private String connectUrl = url;
+    private String connectionMethod = connection;*/
+
+    private String connectUrl = distalEndUrl;
+    private String connectionMethod = distalEndConnection;
 
     private ViewPager videoPagerView;
     private VideoPagerAdapter videoPagerAdapter;
@@ -98,12 +101,12 @@ public class MovieMainActivity extends Activity {
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ExecutorUtl.getExecutor().execute(() ->{
+/*        ExecutorUtl.getExecutor().execute(() ->{
             if (getUrlResponse(connectUrl) == null){
                 connectUrl = distalEndUrl;
                 connectionMethod = distalEndConnection;
             }
-        });
+        });*/
         init();
         mContext = this;
         super.onCreate(savedInstanceState);
@@ -111,38 +114,6 @@ public class MovieMainActivity extends Activity {
         videoPagerView = findViewById(R.id.viewPager);
         videoPagerAdapter = new VideoPagerAdapter(this);
         videoPagerView.setAdapter(videoPagerAdapter);
-//        videoPagerView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                // 滑动正在发生,position表示当前页面,
-//                // positionOffset表示页面偏移的百分比, positionOffsetPixels表示像素偏移量
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                // 当新的页面被选中时调用
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//                // 页面滚动的状态改变时调用,
-//                // 状态可以是:ViewPager.SCROLL_STATE_IDLE、ViewPager.SCROLL_STATE_DRAGGING 或者 ViewPager.SCROLL_STATE_SETTLING
-//                switch (state) {
-//                    case ViewPager.SCROLL_STATE_IDLE:
-//                        // 滚动停止
-//                        break;
-//                    case ViewPager.SCROLL_STATE_DRAGGING:
-//                        // 页面在拖动
-//                        break;
-//                    case ViewPager.SCROLL_STATE_SETTLING:
-//                        LogUtils.d("播放下一个视频");
-//                        currentVideoIndex ++;
-//                        playVideo(currentVideoIndex);
-//                        break;
-//                }
-//            }
-//        });
 
     }
 

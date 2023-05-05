@@ -13,15 +13,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.urldemo.MessageEnum;
 import com.example.urldemo.R;
-import com.example.urldemo.adapter.MovieAdapter;
 import com.example.urldemo.adapter.VideoAdapter;
-import com.example.urldemo.dto.Movie;
-import com.example.urldemo.dto.Video;
 import com.example.urldemo.utils.ExecutorUtl;
 import com.example.urldemo.utils.HandlerUtil;
 import com.example.urldemo.utils.LogUtils;
@@ -40,7 +35,7 @@ import java.util.List;
 public class VideoActivity extends Activity {
     ViewPager viewPager;
     ImageView playButton;
-    private String url = "https://tucdn.wpon.cn/api-girl/index.php?wpon=json";
+    private String url = "https://v.api.aa1.cn/api/api-girl-11-02/index.php?type=json";
     private int updates = 10;
     private VideoAdapter videoAdapter;
     private Context mContext;
@@ -87,7 +82,6 @@ public class VideoActivity extends Activity {
 
             @Override
             public void onPageSelected(int position) {
-                LogUtils.d("onPageSelected");
                 playButton.setImageResource(R.drawable.ic_play);
                 VideoView videoView = (VideoView) viewPager.getChildAt(position);
                 if (videoView.isPlaying()) {

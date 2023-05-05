@@ -19,6 +19,8 @@
 
         <activity android:name=".activity.MovieMainActivity"/>
 
+        <activity android:name=".activity.AiActivity"/>
+
         <activity
             android:name=".activity.VideoActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>

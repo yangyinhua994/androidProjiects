@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aiBt.setOnClickListener(this);
         videoBt = findViewById(R.id.video);
         videoBt.setOnClickListener(this);
-        Intent intent = new Intent(this, MovieMainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @SuppressLint("NonConstantResourceId")
