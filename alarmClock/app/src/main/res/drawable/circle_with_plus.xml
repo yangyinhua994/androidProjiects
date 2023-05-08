@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 圆形背景 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,2a10,10 0,1 1,0 20a10,10 0,1 1,0 -20"/>
+
+    <!-- 横线 -->
+    <path
+        android:strokeColor="#0C84FF"
+        android:strokeWidth="1"
+        android:pathData="M8,12h8"
+        android:strokeLineCap="round"/>
+
+    <!-- 竖线 -->
+    <path
+        android:strokeColor="#0C84FF"
+        android:strokeWidth="1"
+        android:pathData="M12,8v8"
+        android:strokeLineCap="round"/>
+
+</vector>

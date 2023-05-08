@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/ringing_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:text="07:20"
+                android:textStyle="bold"
+                android:textColor="@color/alarm_clock_list_view_text_title_black"/>
+
+            <TextView
+                android:id="@+id/morning_afternoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上午"
+                android:layout_gravity="bottom"/>
+
+            <TextView
+                android:id="@+id/ring_time_difference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/alarm_clock_list_view_text_title_gray"
+                android:text="法定工作日 | 15小时32分钟后响铃"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Switch
+            android:id="@+id/custom_switch_button"
+            android:layout_width="64dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:thumb="@drawable/custom_switch_thumb"
+            android:track="@drawable/custom_switch_track"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    </LinearLayout>
+
+</LinearLayout>
